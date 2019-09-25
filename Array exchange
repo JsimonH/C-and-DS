@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int arr1[] = { 1, 2, 3, 4, 5 };
+	int arr2[] = { 6, 7, 8, 9, 10 };
+	int i = 0;
+	int sz = sizeof(arr1) / sizeof(arr1[0]);
+	for (i = 0; i < sz; i++)//循环1：交换两数组中下标相同的元素
+	{
+		int tmp = 0;
+		tmp = arr1[i];
+		arr1[i] = arr2[i];
+		arr2[i] = tmp;
+	}
+	for (i = 0; i < sz; i++)//循环2：输出数组1
+	{
+		printf("%d ", arr1[i]);
+	}
+	printf("\n");
+	for (i = 0; i < sz; i++)//循环3：输出数组2
+	{
+		printf("%d ", arr2[i]);
+	}
+	printf("\n");
+	system("pause");
+	return 0;
+}
+ 
