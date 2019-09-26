@@ -1,0 +1,59 @@
+#define _CRT_SECURE_NO_WARNINGS   //猜数字游戏，计算机自动会生成一个随机数字，
+#include <stdio.h>                        //由用户输入一个数字，如果用户输入的数字
+#include <stdlib.h>                       //和计算机随机产生的数字不同，由计算机提示
+int Menu()                               //是高了还是低了
+{
+	printf("============================\n");   //1.创建一个循环
+	printf("          1.开始游戏        \n");   //2.打印一个菜单选项，供用户选择
+	printf("          0.退出游戏        \n");    //3.如果选择1则开始游戏，进入具体的游戏环节，
+	printf("============================\n");   //4.如果选择0则退出游戏
+	printf("请输入您的选择：\n");
+	int choice = 0;
+	scanf("%d", &choice);
+	return choice;
+}
+void Game()                              //具体的游戏环节
+{                                            //1.先让计算机产生一个随机整数[1-100]
+	int result = rand() % 100 + 1;       //2.提示用户输入一个数字
+	while (1)                          //3.根据用户的输入，提示是高了还是低了
+	{                                 //4.如果猜错了，仍然提示用户输入数字
+		printf("请输入数字\n");
+		int num = 0;
+		scanf("%d", &num);
+		if (num < result)
+		{
+			printf("低了\n");
+		}
+		else if (num>result)
+		{
+			printf("高了\n");
+		}
+		else
+		{
+			printf("猜对了，恭喜你！\n");
+			break;
+		}
+	}
+}
+int main()
+{
+	while (1)
+	{
+		int choice = Menu();
+		if (choice == 1)
+		{
+			Game();
+		}
+		else if (choice == 0)
+		{
+			printf("游戏退出\n");
+			break;
+		}
+		else
+		{
+			printf("您的输入有误!!!\n");
+		}
+	}
+	system("pause");
+	return 0;
+}
