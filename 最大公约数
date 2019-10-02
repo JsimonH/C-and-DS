@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+//###########相减法，又叫更相减损法##########
+int main()
+{
+	int a = 0;
+	int b = 0;
+	printf("输入两个数字:\n");
+	scanf("%d %d",&a,&b);
+	while (a != b)
+	{
+		if (a > b)
+			a = a - b;
+		else
+			b = b - a;
+	}
+	printf("最大公约数为:%d\n", a);
+	return 0;
+}
+
+
+//#include<stdio.h>
+////*******穷举法*******
+//int main()
+//{
+//	int a, b, c;
+//	printf("输入两个数字:\n");
+//	scanf("%d %d", &a, &b);
+//	c = (a > b) ? b : a;
+//	while(a%c != 0 || b%c != 0)
+//	{
+//		c--;
+//	}
+//	printf("最大公约数为:%d\n", c);
+//	return 0;
+//}
