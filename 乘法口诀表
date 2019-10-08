@@ -12,3 +12,29 @@ int main()
 	}
 	return 0;
 }
+
+
+//用函数的方法打印乘法口诀表
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int mult(int line,int x, int y)
+{
+	for (x = 1; x <=line; x++)
+	{
+		for (y = 1; y <= x; y++)
+		{
+			printf("%d*%d=%d\t", x, y, x*y);
+		}
+		printf("\n");
+	}
+}
+int main()
+{
+	int num = 0;
+	int i = 0;
+	int j = 0;
+	printf("输入打印的行数和列数:\n");
+	scanf("%d", &num);
+	int ret = mult(num,i,j);
+	return 0;
+}
