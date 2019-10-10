@@ -22,3 +22,32 @@ int main()
 	printf("\ncount=%d\n",count);
 	return 0;
 }
+
+
+//函数方法判断闰年
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int leap_year(int num)
+{
+	if ((num % 4 == 0) &&(num % 100 != 0) || (num % 400 == 0))
+	{
+		return 1;
+	}
+	  return 0;
+}
+int main()
+{
+	int year = 0;
+	printf("请输入年份:\n");
+	scanf("%d", &year);
+	int ret = leap_year(year);
+	if (ret==1)
+	{
+		printf("%d年是闰年\n",year);
+	}
+	if (ret == 0)
+	{
+		printf("%d年不是闰年\n",year);
+	}
+	return 0;
+}
