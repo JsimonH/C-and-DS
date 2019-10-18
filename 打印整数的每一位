@@ -1,0 +1,20 @@
+void Print(int n)
+{
+	if(n>9)
+	{
+		Print(n);
+	}
+	printf("%d ", n%10);
+}
+
+int main()
+{
+	int num = 1234;
+	Print(num);
+	//Print(1234);
+	//Print(123) 4
+	//Print(12) 3 4
+	//Print(1) 2 3 4
+	//1 2 3 4
+	return 0;
+}
