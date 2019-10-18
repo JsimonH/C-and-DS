@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+//递归方式
 int fac(int n)
 {
 	if (n <= 1)
@@ -7,6 +8,23 @@ int fac(int n)
 	else
 		return n*fac(n - 1);
 }
+
+//非递归方式
+int fac(int n)
+{
+	int i = 0;
+	int sum = 1;
+	if (n == 0)
+	{
+		return 1;
+	}
+	for (i = 1; i <= n; i++)
+	{
+		sum *= i;
+	}
+	return sum;
+}
+
 int main()
 {
 	int n = 0;
