@@ -10,11 +10,11 @@ int main()
 	int ret = check_sys();
 	if (ret == 1)
 	{
-		printf("Ğ¡¶Ë\n");
+		printf("å°ç«¯\n");
 	}
 	else
 	{
-		printf("´ó¶Ë\n");
+		printf("å¤§ç«¯\n");
 	}
 	return 0;
 }
