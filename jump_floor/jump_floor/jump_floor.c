@@ -15,16 +15,21 @@ int jump_floor1(int n)//µİ¹é
 
 int jump_floor2(int n)//·Çµİ¹é
 {
-	int a = 1;
-	int b = 1;
-	int c = 1;
-	while (n--)
+	int a = 2;
+	int b = 3;
+	int c = 0;
+	if (n == 1 || n == 2||n==3)
 	{
+		return n;
+	}
+	while (n>3)
+	{
+		c = a + b;
 		a = b;
 		b = c;
-		c = a + b;
+		n--;
 	}
-	return a;
+	return c;
 }
 
 int main()
