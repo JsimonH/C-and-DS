@@ -13,10 +13,8 @@ void print_arr(int*arr, int sz)
 void bubble_sort(int* arr, int sz)
 {
 	int i = 0;
-	//趟数
 	for(i=0; i<sz-1; i++)
 	{
-		//每一趟的处理
 		int j = 0;
 		for(j=0; j<sz-1-i; j++)
 		{
