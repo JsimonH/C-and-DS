@@ -1,0 +1,10 @@
+﻿生成启动时间为 2019/11/19 22:58:17。
+     1>项目“D:\Code\strncat\strncat\strncat.vcxproj”在节点 2 上(Build 个目标)。
+     1>Link:
+         D:\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Code\strncat\Debug\strncat.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Code\strncat\Debug\strncat.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Code\strncat\Debug\strncat.lib" /MACHINE:X86 Debug\strncat.obj
+         strncat.vcxproj -> D:\Code\strncat\Debug\strncat.exe
+     1>已完成生成项目“D:\Code\strncat\strncat\strncat.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.33
