@@ -1,0 +1,10 @@
+﻿生成启动时间为 2019/11/22 22:49:47。
+     1>项目“D:\Code\Lh string\Lh string\Lh string.vcxproj”在节点 2 上(Build 个目标)。
+     1>Link:
+         D:\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Code\Lh string\Debug\Lh string.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Code\Lh string\Debug\Lh string.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Code\Lh string\Debug\Lh string.lib" /MACHINE:X86 Debug\Lh.obj
+         Lh string.vcxproj -> D:\Code\Lh string\Debug\Lh string.exe
+     1>已完成生成项目“D:\Code\Lh string\Lh string\Lh string.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.36
