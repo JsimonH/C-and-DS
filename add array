@@ -1,0 +1,36 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* addToArrayForm(int* A, int ASize, int K, int* returnSize){
+if(K == 0){
+        *returnSize = ASize;
+        return A;
+    }
+    int* t = calloc(ASize+5,sizeof(int));
+    int i = ASize - 1,j = ASize + 4,c = 0;
+    while(i >= 0 || K > 0 || c > 0){
+        int m = c;
+        if(i >= 0)
+            m = m + A[i];
+        if(K > 0)
+            m = m + (K % 10);
+        if(m >= 10){
+            t[j] = m - 10;
+            j--;
+            c = 1;
+        }
+        else{
+            t[j] = m;
+            j--;
+            c = 0;
+        }
+        i--;
+        K = K / 10;
+    }
+    *returnSize = ASize - j + 4;
+    j++;
+    int* a = calloc(*returnSize,sizeof(int));
+    for(i = 0;j < ASize + 5;i++,j++)
+        a[i] = t[j];
+    return a;
+}
