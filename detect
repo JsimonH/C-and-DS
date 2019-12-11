@@ -1,0 +1,41 @@
+/*给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
+说明：不允许修改给定的链表。*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+ 
+struct ListNode *detectCycle(struct ListNode *head) {
+    if(head == NULL || head->next == NULL) {
+        return NULL;
+    }
+    struct ListNode* slow = head;
+    struct ListNode* fast = head;
+    bool has_cycle = false;
+    while (fast) {
+        slow = slow->next;
+        fast = fast->next;
+        if (!fast) {
+            break;
+        }
+        fast = fast->next;
+        if (slow == fast) {
+            has_cycle = true;
+            break;
+        }
+    }
+    if (!has_cycle) {
+        return NULL;
+    }
+    struct ListNode* enter = head;
+    while(slow != enter) {
+        slow = slow->next;
+        enter = enter->next;
+    }
+    return enter;
+}
