@@ -1,0 +1,36 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+/*请判断一个链表是否为回文链表
+input：1->2->2->1
+output:true*/
+
+void find_different(struct ListNode *head1, struct ListNode **head2, int *flag)
+{
+    if (head1 != NULL)
+    {
+        find_different(head1->next, head2, flag);
+        if (head1->val == (*head2)->val)
+        {
+            *head2 = (*head2)->next;
+        }
+        else
+        {
+            *flag = false;
+            return ;
+        }    
+    }
+}
+
+bool isPalindrome(struct ListNode* head){
+    int flag = true;
+    struct ListNode *tmp1 = head;
+    struct ListNode **tmp2 = &head;
+    find_different(tmp1, tmp2, &flag);
+    return flag;
+}
