@@ -16,7 +16,6 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n){
 		}
 		else
 		{
-			//ºóÒÆ
 			m += 1;
 			for (int a = m; a>i + 1; a--)
 			{
