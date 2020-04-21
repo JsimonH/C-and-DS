@@ -2,7 +2,7 @@ void Print(int n)
 {
 	if(n>9)
 	{
-		Print(n);
+		Print(n/10);
 	}
 	printf("%d ", n%10);
 }
