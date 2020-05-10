@@ -1,0 +1,207 @@
+// SqList.h
+#pragma once
+#include<stdio.h>
+#include<assert.h>
+#include<stdlib.h>
+
+typedef int SqLDataType;
+typedef struct SeqList
+{
+	SqLDataType* a;
+	size_t size;
+	size_t capacity; // size_t = unsigned int
+}SqList;
+
+// 对数据的管理:增删查改
+void SqListInit(SqList* ps);  //顺序表初始化
+void SqListDestory(SqList* ps);  //顺序表销毁
+void SqListPrint(SqList* ps);  //顺序表打印
+void SqListCheckCapacity(SqList* ps);  //顺序表检查容量
+void SqListPushBack(SqList* ps, SqLDataType x);  //顺序表尾插
+void SqListPushFront(SqList* ps, SqLDataType x);  //顺序表头插
+void SqListPopFront(SqList* ps);  //顺序表头删
+void SqListPopBack(SqList* ps);  //顺序表尾删
+
+// 顺序表查找
+int SqListFind(SqList* ps, SqLDataType x);
+// 顺序表在pos位置插入x
+void SqListInsert(SqList* ps, size_t pos, SqLDataType x);
+// 顺序表删除pos位置的值
+void SqListErase(SqList* ps, size_t pos);
+
+
+//SqList.c
+#include"SqList.h"
+
+void SqListInit(SqList* ps)
+{
+	assert(ps);
+	ps->a = NULL;
+	ps->size = ps->capacity = 0;
+}
+
+void SqListDestory(SqList* ps)
+{
+	assert(ps);
+	free(ps->a);
+	ps->a = NULL;
+	ps->size = ps->capacity = 0;
+}
+
+void SqListPrint(SqList* ps)
+{
+	assert(ps);
+	for (size_t i = 0; i < ps->size; ++i)
+	{
+		printf("%d ", ps->a[i]);
+	}
+	printf("\n");
+}
+
+void SqListCheckCapacity(SqList* ps)
+{
+	if (ps->size == ps->capacity)
+	{
+		size_t newcapacity = ps->capacity == 0 ? 4 : ps->capacity * 2;
+		ps->a = (SqLDataType*)realloc(ps->a, sizeof(SqLDataType)*newcapacity);
+		ps->capacity = newcapacity;
+	}
+}
+
+void SqListPushBack(SqList* ps, SqLDataType x)
+{
+	/*assert(ps);
+	SqListCheckCapacity(ps);
+	ps->a[ps->size] = x;
+	++ps->size;*/
+
+	SqListInsert(ps, ps->size, x);
+}
+
+void SqListPushFront(SqList* ps, SqLDataType x)
+{
+	/*assert(ps);
+	SqListCheckCapacity(ps);
+	for (size_t i = ps->size; i > 0; --i)
+	{
+		ps->a[i] = ps->a[i - 1];
+	}
+	ps->a[0] = x;
+	++ps->size;*/
+
+	SqListInsert(ps, 0, x);
+}
+
+void SqListPopFront(SqList* ps)
+{
+	/*assert(ps);
+	for (size_t i = 0; i < ps->size - 1; ++i)
+	{
+		ps->a[i] = ps->a[i+1];
+	}
+	--ps->size;*/
+	SqListErase(ps, 0);
+}
+
+void SqListPopBack(SqList* ps)
+{
+	/*assert(ps);
+	ps->a[ps->size - 1] = 0;
+	--ps->size;*/
+	SqListErase(ps, ps->size - 1);
+}
+
+int SqListFind(SqList* ps, SqLDataType x)
+{
+	for (size_t i = 0; i < ps->size; ++i)
+	{
+		if (ps->a[i] == x)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+void SqListInsert(SqList* ps, size_t pos, SqLDataType x)
+{
+	assert(ps);
+	assert(pos <= ps->size);
+	SqListCheckCapacity(ps);
+	
+	for (size_t i = ps->size; i > pos; --i)
+	{
+		ps->a[i] = ps->a[i - 1];
+	}
+	ps->a[pos] = x;
+	++ps->size;
+}
+
+void SqListErase(SqList* ps, size_t pos)
+{
+	assert(ps);
+	assert(pos < ps->size);
+
+	for (size_t i = pos; i < ps->size - 1; ++i)
+	{
+		ps->a[i] = ps->a[i + 1];
+	}
+	--ps->size;
+}
+
+
+//test.c
+#include"SqList.h"
+
+int main()
+{
+	SqList s;
+	//初始化
+	SqListInit(&s);
+	
+	//尾插1,2,3,4,5
+	printf("顺序表尾插:\n");
+	SqListPushBack(&s, 1);
+	SqListPushBack(&s, 2);
+	SqListPushBack(&s, 3);
+	SqListPushBack(&s, 4);
+	SqListPushBack(&s, 5);
+	SqListPrint(&s);
+	
+	//头插1,0
+	printf("顺序表头插:\n");
+	SqListPushFront(&s, 1);
+	SqListPushFront(&s, 0);
+	SqListPrint(&s);
+	
+	//头删一次
+	printf("顺序表头删:\n");
+	SqListPopFront(&s);
+	SqListPrint(&s);
+	
+	//尾删一次
+	printf("顺序表尾删:\n");
+	SqListPopBack(&s);
+	SqListPrint(&s);
+	
+	//查找元素5和3,没找到返回-1;找到返回下标
+	printf("顺序表查找:\n");
+	int ret1 = SqListFind(&s, 5);
+	int ret2 = SqListFind(&s, 3);
+	printf("%d\n", ret1);
+	printf("%d\n", ret2);
+
+	//在下标为2的位置插入数字5
+	printf("顺序表插入:\n");
+	SqListInsert(&s, 2, 5);
+	SqListPrint(&s);
+	
+	//在下标为1的位置删除元素
+	printf("顺序表删除:\n");
+	SqListErase(&s, 1);
+	SqListPrint(&s);
+	
+	//销毁
+	SqListDestory(&s);
+	return 0;
+}
